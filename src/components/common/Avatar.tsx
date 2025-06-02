@@ -52,12 +52,12 @@ export const AVATAR_SIZES = {
   small: 2.125 * REM,
   medium: 2.75 * REM,
   large: 3.375 * REM,
+  xl: 4.5 * REM,
   giant: 5.625 * REM,
   jumbo: 7.5 * REM,
 };
 
-export type AvatarSize =
-  'micro' | 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'giant' | 'jumbo' | number;
+export type AvatarSize = keyof typeof AVATAR_SIZES | number;
 
 const cn = createClassNameBuilder('Avatar');
 cn.media = cn('media');
@@ -66,6 +66,7 @@ cn.icon = cn('icon');
 type OwnProps = {
   className?: string;
   size?: AvatarSize;
+  forceRoundedRect?: boolean;
   peer?: ApiPeer | CustomPeer;
   photo?: ApiPhoto;
   webPhoto?: ApiWebDocument;
@@ -92,6 +93,7 @@ type OwnProps = {
 const Avatar: FC<OwnProps> = ({
   className,
   size = 'large',
+  forceRoundedRect,
   peer,
   photo,
   webPhoto,
@@ -245,8 +247,9 @@ const Avatar: FC<OwnProps> = ({
     content = getFirstLetters(text, 2);
   }
 
-  const isRoundedRect = (isCustomPeer && peer.isAvatarSquare)
+  const isRoundedRect = forceRoundedRect || (isCustomPeer && peer.isAvatarSquare)
   || (isForum && !((withStory || withStorySolid) && realPeer?.hasStories));
+
   const isPremiumGradient = isCustomPeer && peer.withPremiumGradient;
   const customColor = isCustomPeer && peer.customPeerAvatarColor;
 
