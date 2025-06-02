@@ -12,6 +12,10 @@
 
 .main {
   flex: 1;
+  margin: 10px 10px 10px 120px;
+  border-radius: 8px;
+  border: 1px solid var(--color-borders);
+  background-color: var(--color-background);
 
   @media (min-width: 926px) {
     display: grid;
@@ -21,7 +25,6 @@
 }
 
 .left {
-  flex: 1;
   background: var(--color-background);
   min-width: 16rem;
   width: 33vw;
@@ -52,12 +55,14 @@
 }
 
 .middle {
-  flex: 3;
+  flex: 1;
+  width: 100%;
   border-left: 1px solid var(--color-borders);
   position: relative;
   z-index: 1;
   overflow: hidden;
   background-size: cover !important;
+  background-color: var(--color-background-secondary);
 
   @media (max-width: 1275px) {
     border-right: none;
