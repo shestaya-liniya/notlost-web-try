@@ -59,7 +59,7 @@
   }
 
   .ListItem-button {
-    min-height: 3rem;
+    min-height: 2.5rem;
     background-color: var(--background-color);
     border: none !important;
     box-shadow: none !important;
@@ -71,7 +71,7 @@
     overflow: hidden;
     white-space: nowrap;
     color: var(--color-text);
-    border-radius: var(--border-radius-default);
+    border-radius: var(--border-radius-medium);
     --ripple-color: rgba(0, 0, 0, 0.08);
     text-decoration: none;
 
@@ -220,7 +220,7 @@
     }
 
     .ListItem-button {
-      padding: 0.5rem;
+      padding: 0.25rem;
     }
 
     &.contact-list-item {
@@ -234,7 +234,7 @@
     }
 
     .Avatar {
-      margin-right: 0.75rem;
+      margin-right: 0.5rem;
     }
 
     .info {
