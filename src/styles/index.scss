@@ -112,6 +112,7 @@ body.cursor-ew-resize {
 }
 
 #middle-column-portals,
+#middle-column-left-sidebar-portals,
 #portals {
   position: absolute;
   top: 0;
@@ -119,7 +120,7 @@ body.cursor-ew-resize {
   right: 0;
   height: 0;
 }
-
+#middle-column-left-sidebar-portals,
 #middle-column-portals {
   top: calc(0rem - var(--call-header-height, 0rem));
 }
