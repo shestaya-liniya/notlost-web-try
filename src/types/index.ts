@@ -306,8 +306,11 @@ export enum LeftColumnContent {
   NewGroupStep1,
   NewGroupStep2,
   Workspace,
-  Inbox,
   Saved,
+  AllUnread,
+  Bots,
+  Groups,
+  Channels,
 }
 
 export enum GlobalSearchContent {
