@@ -1,7 +1,5 @@
 import type { FC } from '../../lib/teact/teact';
-import React, {
-  memo, useMemo, useRef,
-} from '../../lib/teact/teact';
+import React, { memo, useMemo } from '../../lib/teact/teact';
 import { getActions } from '../../global';
 
 import type {
@@ -25,7 +23,6 @@ import { copyTextToClipboard } from '../../util/clipboard';
 import stopEvent from '../../util/stopEvent';
 import renderText from './helpers/renderText';
 
-import { useIsOverflowing } from '../../hooks/useIsOverflowing';
 import useLastCallback from '../../hooks/useLastCallback';
 import useOldLang from '../../hooks/useOldLang';
 
@@ -81,10 +78,6 @@ const FullNameTitle: FC<OwnProps> = ({
   const emojiStatus = realPeer?.emojiStatus
     || (customPeer?.emojiStatusId ? { type: 'regular', documentId: customPeer.emojiStatusId } : undefined);
 
-  // eslint-disable-next-line no-null/no-null
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const isOverflowing = useIsOverflowing(titleRef);
-
   const handleTitleClick = useLastCallback((e) => {
     if (!title || !canCopyTitle) {
       return;
@@ -131,14 +124,12 @@ const FullNameTitle: FC<OwnProps> = ({
         />
       )}
       <h3
-        ref={titleRef}
         dir="auto"
         role="button"
         className={buildClassName(
           'fullName',
           styles.fullName,
           canCopyTitle && styles.canCopy,
-          isOverflowing && styles.textShadow,
         )}
         onClick={handleTitleClick}
       >
