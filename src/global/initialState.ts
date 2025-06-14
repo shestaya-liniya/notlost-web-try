@@ -325,6 +325,12 @@ export const INITIAL_GLOBAL_STATE: GlobalState = {
     isMinimized: false,
     isHidden: false,
   },
+
+  workspaces: {
+    activeId: undefined,
+    byOrder: [],
+    areLoaded: false,
+  },
 };
 
 export const INITIAL_TAB_STATE: TabState = {
@@ -362,7 +368,7 @@ export const INITIAL_TAB_STATE: TabState = {
   userSearch: {},
 
   leftColumn: {
-    contentKey: LeftColumnContent.ChatList,
+    contentKey: LeftColumnContent.Workspace,
     settingsScreen: SettingsScreens.Main,
   },
 

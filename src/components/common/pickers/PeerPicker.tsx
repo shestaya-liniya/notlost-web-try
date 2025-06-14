@@ -1,5 +1,6 @@
 import React, {
   memo, useCallback, useEffect, useMemo, useRef,
+  useState,
 } from '../../../lib/teact/teact';
 import { getGlobal } from '../../../global';
 
@@ -115,6 +116,7 @@ const PeerPicker = <CategoryType extends string = CustomPeerType>({
   ...optionalProps
 }: OwnProps<CategoryType>) => {
   const lang = useOldLang();
+  const [showTopShadow, setShowTopShadow] = useState(false);
 
   const allowMultiple = optionalProps.allowMultiple;
   const lockedSelectedIds = allowMultiple ? optionalProps.lockedSelectedIds : undefined;
@@ -310,7 +312,8 @@ const PeerPicker = <CategoryType extends string = CustomPeerType>({
           <Avatar
             peer={peer || category}
             isSavedMessages={isSelf}
-            size="medium"
+            size="tiny"
+            forceRoundedRect
           />
         )}
         subtitle={subtitle}
@@ -342,6 +345,11 @@ const PeerPicker = <CategoryType extends string = CustomPeerType>({
       </div>
     );
   }, [categories, categoryPlaceholderKey, lang, renderItem]);
+
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    const scrollTop = e.currentTarget.scrollTop;
+    setShowTopShadow(scrollTop > 0);
+  }, []);
 
   return (
     <div className={buildClassName(styles.container, className)}>
@@ -387,7 +395,7 @@ const PeerPicker = <CategoryType extends string = CustomPeerType>({
           />
         </div>
       )}
-
+      <div className={buildClassName(styles.topShadow, showTopShadow && styles.visibleShadow)} />
       {viewportIds?.length ? (
         <InfiniteScroll
           className={buildClassName(styles.pickerList, withDefaultPadding && styles.padded, 'custom-scroll')}
@@ -396,6 +404,7 @@ const PeerPicker = <CategoryType extends string = CustomPeerType>({
           beforeChildren={beforeChildren}
           onLoadMore={getMore}
           noScrollRestore={noScrollRestore}
+          onScroll={handleScroll}
         >
           {viewportIds.map((id) => renderItem(id))}
         </InfiniteScroll>

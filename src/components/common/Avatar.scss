@@ -127,8 +127,12 @@
     z-index: 0;
   }
 
-  &.forum {
+  &.roundedRect {
     --radius: var(--border-radius-forum-avatar);
+  }
+
+  &.hex {
+    transform: scale(1.15);
   }
 
   &.hidden-user {

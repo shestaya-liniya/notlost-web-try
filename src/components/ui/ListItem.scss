@@ -59,19 +59,18 @@
   }
 
   .ListItem-button {
-    min-height: 3rem;
+    min-height: 2.5rem;
     background-color: var(--background-color);
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
     display: flex;
-    align-items: center;
     padding: 0 1rem;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
     color: var(--color-text);
-    border-radius: var(--border-radius-default);
+    border-radius: var(--border-radius-medium);
     --ripple-color: rgba(0, 0, 0, 0.08);
     text-decoration: none;
 
@@ -220,7 +219,7 @@
     }
 
     .ListItem-button {
-      padding: 0.5rem;
+      padding: 0.25rem;
     }
 
     &.contact-list-item {
@@ -234,7 +233,7 @@
     }
 
     .Avatar {
-      margin-right: 0.75rem;
+      margin-right: 0.5rem;
     }
 
     .info {
@@ -269,7 +268,7 @@
       margin: 0;
       overflow: hidden;
       white-space: nowrap;
-      text-overflow: ellipsis;
+      text-overflow: clip;
       text-align: initial;
     }
 
@@ -281,6 +280,7 @@
 
     .title {
       h3 {
+        font-size: 0.875rem;
         font-weight: var(--font-weight-medium);
       }
     }
@@ -359,7 +359,8 @@
     .typing-status {
       body.is-ios &,
       body.is-macos & {
-        font-size: 0.9375rem;
+        line-height: 0.875rem;
+        font-size: 0.875rem;
       }
     }
 
